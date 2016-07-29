@@ -12,7 +12,7 @@ header #menu {
     color: #66a066;
 }
 
-header .menuitem{
+header #menuitem{
     list-style: none;
     display: inline-block;
     background-color: #d0ffd0;
@@ -30,7 +30,7 @@ header .menuitem{
 }
 
 
-header .menuitem:hover{
+header #menuitem:hover{
     color: #447044;
     background-color: #b0ddb0;
     border-radius: 30px;
