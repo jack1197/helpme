@@ -1,6 +1,4 @@
-<?php
-echo ''
-?>
+<?php echo '' ?>
  '<!DOCTYPE html>
 <html lang="en">
 
@@ -40,6 +38,10 @@ echo ''
                     if ($currpage == $page)
                     {
                         $activetext = 'class="active " ';
+                        if !isset($title)
+                        {
+                            $title = $page
+                        }
                     }
                     echo('<li '.$activetext.'><a href="/'.$pagel.'">'.$page.'</a></li>');
                 }
@@ -54,3 +56,15 @@ echo ''
         </h1>
     </nav>
     <div class="container">
+        <div class="col-sm-12 well">
+            <?php
+            if (isset($title)) 
+            {
+                echo '<h1>'.$title.'</h1>';
+            }
+            else 
+            {
+                echo
+            }
+            ?>
+        </div>
