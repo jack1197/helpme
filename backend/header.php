@@ -56,7 +56,7 @@
         </h1>
     </nav>
     <div class="container main">
-        <div class="col-sm-12 header">
+        <div class="col-sm-12 page-header">
             <?php
             if (isset($title)) 
             {
