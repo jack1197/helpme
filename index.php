@@ -1,6 +1,6 @@
 <?php 
 $currpage = 'Home';
-$title = 'Help me! Class Queuing';
+$title = 'Help me! <small>Class Queuing</small>';
 ini_set("display_errors", 1);
 require($_SERVER['DOCUMENT_ROOT'].'/backend/header.php');
 ?>

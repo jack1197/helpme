@@ -56,13 +56,11 @@
         </h1>
     </nav>
     <div class="container">
-        <div class="main">
-            <div class="col-sm-12 page-header">
-                <?php
-                if (isset($title)) 
-                {
-                    echo '<h1>'.$title.'</h1>';
-                }
-                ?>
-            </div>
+        <div class="page-header">
+            <?php
+            if (isset($title)) 
+            {
+                echo '<h1>'.$title.'</h1>';
+            }
+            ?>
         </div>
