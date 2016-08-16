@@ -1,5 +1,5 @@
 <?php 
-$currpage = 'About'';
+$currpage = 'About;
 ini_set("display_errors", 1);
 require($_SERVER['DOCUMENT_ROOT'].'/backend/header.php');
 ?>
