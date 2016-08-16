@@ -66,7 +66,7 @@ ini_set("display_errors", 1);
             }
             else 
             {
-                echo '<h1>'.$currpage.'</h1>'
+                echo '<h1>'.$currpage.'</h1>';
             }
             ?>
         </div>
