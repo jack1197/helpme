@@ -5,6 +5,6 @@ body {
     padding-top: 70px;
 }
 
-main {
+.main {
     background-color: rbga(1,1,1,0.5);
 }
