@@ -41,7 +41,7 @@ echo ''
                     {
                         $activetext = 'class="active " ';
                     }
-                    echo('<li'.$activetext.'><a href="/'.$pagel.'">'.$page.'</a></li>');
+                    echo('<li '.$activetext.'><a href="/'.$pagel.'">'.$page.'</a></li>');
                 }
                 ?>
             </ul>
