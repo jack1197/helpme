@@ -55,8 +55,8 @@
         </div>
         </h1>
     </nav>
-    <div class="container">
-        <div class="col-sm-12 well">
+    <div class="container main">
+        <div class="col-sm-12">
             <?php
             if (isset($title)) 
             {

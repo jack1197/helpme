@@ -4,3 +4,7 @@ body {
     min-width: 300px;
     padding-top: 70px;
 }
+
+main {
+    background-color: rbga(1,1,1,0.5);
+}
