@@ -35,7 +35,7 @@ echo ''
                 <?php
                 $pages = array("Home", "Student", "Tutor", "Help", "About");
                 $n_pages = count(pages);
-                for($x = 0; $x < $n_pages;x++)
+                for($x = 0; $x < $n_pages; $x++)
                 {
                     $page = $pages[$x];
                     $pagel = strtolower($page);
