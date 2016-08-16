@@ -32,6 +32,21 @@ echo ''
                 <li><a href="# ">Page 1</a></li>
                 <li><a href="# ">Page 2</a></li>
                 <li><a href="# ">Page 3</a></li>
+                <?php
+                $pages = array("Home", "Student", "Tutor", "Help", "About");
+                $n_pages = count(pages);
+                for($x = 0; $x < $n_pages;x++)
+                {
+                    $page = $pages[$x];
+                    $pagel = strtolower($page);
+                    $activetext  = '';
+                    if ($currpage == $page)
+                    {
+                        $activetext = 'class="active " ';
+                    }
+                    echo('<li><a '.$activetext.'href="/'.$pagel.'">'.$page'</a></li>');
+                }
+                ?>
             </ul>
             <ul class="nav navbar-nav navbar-right ">
                 <li><a href="# "><span class="glyphicon glyphicon-user "></span> Sign Up</a></li>
