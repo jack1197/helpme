@@ -36,7 +36,6 @@ echo ''
                 "About"=>'about.php');
                 foreach($pages as $page => $pagel)
                 {
-                    $page = $pages[$x];
                     $activetext  = '';
                     if ($currpage == $page)
                     {
