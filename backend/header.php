@@ -76,7 +76,7 @@ ini_set("display_errors", 1);
         </h1>
     </nav>
     <div class="container">
-        <div class="page-header">
+        <header class="page-header">
             <?php
             if (isset($title)) 
             {
@@ -87,4 +87,4 @@ ini_set("display_errors", 1);
                 echo '<h1>'.$currpage.'</h1>';
             }
             ?>
-        </div>
+        </header>
