@@ -38,9 +38,9 @@
                     if ($currpage == $page)
                     {
                         $activetext = 'class="active " ';
-                        if !isset($title)
+                        if (!isset($title))
                         {
-                            $title = $page
+                            $title = $page;
                         }
                     }
                     echo('<li '.$activetext.'><a href="/'.$pagel.'">'.$page.'</a></li>');
@@ -61,10 +61,6 @@
             if (isset($title)) 
             {
                 echo '<h1>'.$title.'</h1>';
-            }
-            else 
-            {
-                echo
             }
             ?>
         </div>
