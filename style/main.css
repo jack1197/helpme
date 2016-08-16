@@ -10,3 +10,11 @@ body {
     border-radius: 10px;
     box-shadow: 5px 5px 3px #333;
 }
+
+h1 {
+    color: #ccc;
+}
+
+.page-header {
+    border-bottom-color: #555;
+}
