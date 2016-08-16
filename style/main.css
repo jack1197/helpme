@@ -1,7 +1,6 @@
 body {
-    background-image: url("/img/bg-main-blur.jpg");
-    background-size: cover;
-    background-repeat: repeat-y;
+    background-image: url("/img/footer_lodyas.jpg");
+    background-repeat: repeat;
     min-width: 300px;
     padding-top: 70px;
 }
