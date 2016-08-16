@@ -28,17 +28,15 @@ echo ''
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active "><a href="# ">Home</a></li>
-                <li><a href="# ">Page 1</a></li>
-                <li><a href="# ">Page 2</a></li>
-                <li><a href="# ">Page 3</a></li>
                 <?php
-                $pages = array("Home", "Student", "Tutor", "Help", "About");
-                $n_pages = count($pages);
-                for($x = 0; $x < $n_pages; $x++)
+                $pages = array("Home"=>'index.html',
+                "Student"=>'student.php', 
+                "Tutor"=>'tutor.php', 
+                "Help"=>'help.php', 
+                "About"=>'about.php');
+                foreach($pages as $page => $pagel)
                 {
                     $page = $pages[$x];
-                    $pagel = strtolower($page);
                     $activetext  = '';
                     if ($currpage == $page)
                     {
