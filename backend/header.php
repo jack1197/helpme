@@ -62,5 +62,9 @@
             {
                 echo '<h1>'.$title.'</h1>';
             }
+            else 
+            {
+                echo '<h1>'.$currpage.'</h1>'
+            }
             ?>
         </div>
