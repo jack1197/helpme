@@ -20,3 +20,8 @@ h1 {
 .page-header {
     border-bottom-color: #555;
 }
+
+.footer {
+    height: auto;
+    background-color: #444;
+}

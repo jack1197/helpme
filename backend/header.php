@@ -7,7 +7,25 @@ ini_set("display_errors", 1);
 <head>
     <title>Help Me! Class Queue</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Jack Wilkie">
+    <?php
+    if (isset($desc))
+    {
+        echo '<meta name="description" content="'.$desc.'">';
+    }
+    elseif (isset($title))
+    {
+        echo '<meta name="description" content="'.$title.'">';
+    }
+    else
+    {
+        echo '<meta name="description" content="'.$currpage.'">';
+    }
+    ?>
+    
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
