@@ -1,6 +1,5 @@
 <?php 
-ini_set("display_errors", 1);
-include($_SERVER['DOCUMENT_ROOT'].'/backend/head.php');
+require($_SERVER['DOCUMENT_ROOT'].'/backend/header.php');
 ?>
         <h1>Help me! Class Queuing</h1>
-<?php include($_SERVER['DOCUMENT_ROOT'].'/backend/footer.php'); ?>
+<?php require($_SERVER['DOCUMENT_ROOT'].'/backend/footer.php'); ?>
