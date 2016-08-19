@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use Auth;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class StudentController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,6 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (Auth::check())
+        {
+            $user = Auth::user();
+            return view('student', [
+                'user' => $user
+            ]);
+        }
+        else
+        {
+            return view('student');
+        }
     }
 }
