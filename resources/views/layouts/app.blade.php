@@ -13,6 +13,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/style/main.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
@@ -26,7 +28,7 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -40,22 +42,26 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    Help Me! (DEV)
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li class="{{ active_class(if_uri_pattern('home')) }}"><a href="{{ url('/home') }}">Home</a></li>
+                    <li class="{{ active_class(if_uri_pattern('student*')) }}"><a href="{{ url('/student') }}">Student</a></li>
+                    <li class="{{ active_class(if_uri_pattern('tutor*')) }}"><a href="{{ url('/tutor') }}">Tutor</a></li>
+                    <li class="{{ active_class(if_uri_pattern('help*')) }}"><a href="{{ url('/help') }}">Help</a></li>
+                    <li class="{{ active_class(if_uri_pattern('about')) }}"><a href="{{ url('/about') }}">About</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-log-in "></span> Login</a></li>
+                        <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-user "></span> Register</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -73,6 +79,19 @@
     </nav>
 
     @yield('content')
+
+    <footer class="container-fluid footer">
+        <div class="container">
+            <div class="col-sm-6">
+                <p>Website by Jack Wilkie</p>
+            </div>
+            <div class="col-sm-6">
+                <p>Background by 
+                <a href="http://subtlepatterns.com/dark-sharp-edges/">Carlos Aguilar</a>, 
+                Used under CC BY-SA 3.0</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
