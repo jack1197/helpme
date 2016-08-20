@@ -64,12 +64,13 @@ function join_class(code, name, desk, callback, error){
 }
 
 function leave_class(callback, error){
-    console.log("Joining class");
+    console.log("Leaving class");
     $.ajax({
         url: "/class/student",
-        type: "DELETE",
+        type: "POST",
         data: {
             'student_session_id': class_data.student_session_id,
+            '_method': "DELETE",
         },
         dataType: 'json',
         success: callback,
