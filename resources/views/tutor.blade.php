@@ -21,13 +21,13 @@
                             <div class="form-horizontal">
                                 <h4>Class information:</h4>
                                 <div class="form-group">
-                                    <label for="classname" class="col-sm-2 control-label">Name:</label>
+                                    <label for="newclassname" class="col-sm-2 control-label">Name:</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="classname" id="newclassname" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="classroom" class="col-sm-2 control-label">Room:</label>
+                                    <label for="newclassroom" class="col-sm-2 control-label">Room:</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="classroom" id="newclassroom" class="form-control">
                                     </div>
@@ -48,7 +48,7 @@
                         <div class="panel-body well">
                             <div class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="classname" class="col-sm-2 control-label">Tutor Join Code:</label>
+                                    <label for="tutorjoincode" class="col-sm-2 control-label">Tutor Join Code:</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="tutorjoincode" id="tutorjoincode" class="form-control input-lg">
                                     </div>
@@ -66,7 +66,7 @@
                     <!-- ACTIVE INTERFACE -->
                     <div id="pan_manage_class">
                         <h3>Class: <span id="class_name_disp"></span>, Room: <span id="class_room_disp"></span></h3>
-                        <div class="panel-body well" id="pan_join_class">
+                        <div class="panel-body well">
                             <div class="form-horizontal">
                                 <div class="form-group">
                                     <h2 class="col-sm-6">Student Join Code: </h2>
@@ -84,9 +84,9 @@
                                     <div class="col-xs-6 col-sm-3">Reason:</div>
                                     <div class="col-xs-6 col-sm-3">Marking</div>
                                     <div id="curr_student_btns" class="col-sm-12">
-                                        <button id='dismiss' class='btn-lg btn-primary'>Dismiss</button>
-                                        <button id='dismiss' class='btn-lg btn-warning'>Delay</button>
-                                        <button id='dismiss' class='btn-lg btn-default'>Undo</button>
+                                        <button id='dismiss_curr' class='btn-lg btn-primary'>Dismiss</button>
+                                        <button id='delay_curr' class='btn-lg btn-warning'>Delay</button>
+                                        <button id='undo_last' class='btn-lg btn-default'>Undo</button>
                                     </div>
                                 </div>
                                 <h3>Waiting Students</h3>
