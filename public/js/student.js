@@ -33,6 +33,7 @@ $(document).ready(function(){
             {
                 $("#pan_active_class").hide();
                 $("#pan_join_class").show();
+                clearInterval(loop_timer);
             }
 
         }, 
@@ -69,7 +70,7 @@ function leave_class(callback, error){
         url: "/class/student",
         type: "POST",
         data: {
-            'student_session_id': class_data.student_session_id,
+            'student_session_id': class_data.ssession.id,
             '_method': "DELETE",
         },
         dataType: 'json',
@@ -79,23 +80,6 @@ function leave_class(callback, error){
 
 }
 
-function start_class(){
-    $("#pan_active_class").show();
-    $("#pan_join_class").hide();
-    $("#curr_class")[0].innerHTML = class_data.class_name;
-    $("#curr_desk")[0].innerHTML = class_data.desk;
-    $("#curr_name")[0].innerHTML = class_data.name;
-
-    //start loop
-    class_loop();
-    loop_time = setTimeout(class_loop, 4000);
-}
-
-function class_loop()
-{
-    //check that session is still active
-}
-
 function update_session(needs_help, reason, callback, error)
 {
     console.log("Updating session");
@@ -103,9 +87,23 @@ function update_session(needs_help, reason, callback, error)
         url: "/class/student",
         type: "PUT",
         data: {
-            'student_session_id': class_data.student_session_id,
+            'student_session_id': class_data.ssession.id,
             'needs_help': needs_help ? 1 : 0,
             'reason': reason,
+        },
+        dataType: 'json',
+        success: callback,
+        error: error,
+    });
+}
+function refresh_session(callback, error)
+{
+    console.log("Refreshing session");
+    $.ajax({
+        url: "/class/student/refresh",
+        type: "GET",
+        data: {
+            'student_session_id': class_data.ssession.id,
         },
         dataType: 'json',
         success: callback,
@@ -139,4 +137,42 @@ function scrub_that()
         alert("Request Error: " + status + " " + errorThrown);
 
     });
+}
+
+function start_class(){
+    $("#pan_active_class").show();
+    $("#pan_join_class").hide();
+    $("#curr_class")[0].innerHTML = class_data.class_name;
+    $("#curr_desk")[0].innerHTML = class_data.ssession.desk;
+    $("#curr_name")[0].innerHTML = class_data.ssession.name;
+
+    //start loop
+    class_loop();
+    loop_timer = setInterval(class_loop, 4000);
+}
+
+function class_loop()
+{
+    refresh_session(function(data){
+        //on success
+        if (data == []){
+
+        }
+        class_data = data;
+        $("#curr_class")[0].innerHTML = class_data.class_name;
+        $("#curr_desk")[0].innerHTML = class_data.ssession.desk;
+        $("#curr_name")[0].innerHTML = class_data.ssession.name;
+        if (class_data.ssession.needs_help){
+            $('#btn_scrub_that').show();
+            $('#btn_help_me').hide();
+            $("#helpreason")[0].disabled = true;
+        }else{
+            $('#btn_scrub_that').hide();
+            $('#btn_help_me').show();
+            $("#helpreason")[0].disabled = false;
+        }
+    }, function(jqXHR, status, errorThrown){
+        //on error
+        alert("Request Error: " + status + " " + errorThrown);
+    })
 }

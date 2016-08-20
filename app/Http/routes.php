@@ -20,6 +20,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/student', 'StudentController@index');
 Route::get('/tutor', 'TutorController@index');
+//unimplemented
 //Route::get('/help', 'HelpController@index');
 //Route::get('/about', 'AboutController@index');
 
@@ -29,8 +30,11 @@ Route::get('/account', 'AccountController@index');
 
 Route::post('/class/new', 'ClassSessionController@newclass');
 
-Route::get('/class/tutor/join', 'ClassSessionController@tutorjoinclass');
+Route::get('/class/tutor', 'ClassSessionController@tutorjoinclass');
+Route::put('/class/tutor', 'ClassSessionController@tutorupdateclass');
+Route::delete('/class/tutor', 'ClassSessionController@tutordeleteclass');
 
 Route::get('/class/student', 'ClassSessionController@studentjoinclass');
+Route::get('/class/student/refresh', 'ClassSessionController@studentrefreshclass');
 Route::put('/class/student', 'ClassSessionController@studentupdateclass');
 Route::delete('/class/student', 'ClassSessionController@studentleaveclass');

@@ -64,7 +64,7 @@ class ClassSessionController extends Controller
     public function tutorjoinclass(Request $request)
     {
         $this->validate($request, [
-            'tutor_id' => 'min:10000000|max:99999999|integer|required',
+            'tutor_code' => 'min:10000000|max:99999999|integer|required',
             ]);
 
         $csession = ClassSession::where('tutor_code', $request->tutor_code)->firstOrFail();
@@ -83,7 +83,7 @@ class ClassSessionController extends Controller
     public function tutordeleteclass(Request $request)
     {
         $this->validate($request, [
-            'tutor_id' => 'min:10000000|max:99999999|integer|required',
+            'tutor_code' => 'min:10000000|max:99999999|integer|required',
         ]);
 
         $csession = ClassSession::where('tutor_code', $request->tutor_code)->firstOrFail();
@@ -92,6 +92,9 @@ class ClassSessionController extends Controller
         return response()->json(['success' => true]);
 
     }
+
+    //
+
 
     public function studentjoinclass(Request $request)
     {
@@ -118,9 +121,7 @@ class ClassSessionController extends Controller
         return response()->json([
             'class_name' => $csession->class_name,
             'class_room' => $csession->class_room,
-            'name' => $ssession->name,
-            'desk' => $ssession->desk,
-            'student_session_id' => $ssession->id,
+            'ssession' => $ssession,
             ]);
 
     }
@@ -131,6 +132,22 @@ class ClassSessionController extends Controller
         $ssession->delete();
         
         return response()->json(['success' => true]);
+    }
+    public function studentrefreshclass(Request $request)
+    {
+        if ( StudentSession::where('id', $request->student_session_id)->count() == 0)
+        {
+            return response()->jsion(['success' => false]);
+        }
+        $ssession = StudentSession::where('id', $request->student_session_id)->firstOrFail();
+        $csession = $ssession->classsession;
+        
+        return response()->json([
+            'success' => true,
+            'class_name' => $csession->class_name,
+            'class_room' => $csession->class_room,
+            'ssession' => $ssession,
+            ]);
     }
 
     public function studentupdateclass(Request $request)
@@ -155,4 +172,6 @@ class ClassSessionController extends Controller
         
         return response()->json(['success' => true]);
     }
+
+
 }

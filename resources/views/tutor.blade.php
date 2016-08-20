@@ -72,17 +72,42 @@
                                     <h2 class="col-sm-6">Student Join Code: </h2>
                                     <span class="col-sm-6"><code id="student_code_disp"></code></span>
                                 </div>
+                                <!--Class Controlls-->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse1">
+                                                    <div class="btn btn-warning">Class Settings</div></a>
+                                                <div class="btn btn-danger" id="btn_leave_class">Leave Class</div>
+                                            </h4>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                Tutor Join Code: 
+                                                <span id="tutorjoincode_settings"></span>
+                                                <btn class="btn btn-warning" id="btn_show_tutor_code">Show</btn>
+                                                <btn class="btn btn-primary" id="btn_hide_tutor_code">Hide</btn>
+
+                                            </li>
+                                            <li class="list-group-item">
+                                                Delete Class(Irreversible): 
+                                                <btn class="btn btn-danger" id="btn_delete_class">DELETE</btn>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <!--List of students-->
                                 <h3>Next Student:</h3>
                                 <div class="col-sm-12" id="curr_student">
                                     <div class="col-xs-6 col-sm-3">Name:</div>
-                                    <div class="col-xs-6 col-sm-3">Joe</div>
+                                    <div class="col-xs-6 col-sm-3" id="curr_name">Joe</div>
                                     <div class="col-xs-6 col-sm-3">Desk:</div>
-                                    <div class="col-xs-6 col-sm-3">12</div>
+                                    <div class="col-xs-6 col-sm-3" id="curr_desk">12</div>
                                     <div class="col-xs-6 col-sm-3">Waiting Time:</div>
-                                    <div class="col-xs-6 col-sm-3">5 minutes</div>
+                                    <div class="col-xs-6 col-sm-3" id="curr_time">5 minutes</div>
                                     <div class="col-xs-6 col-sm-3">Reason:</div>
-                                    <div class="col-xs-6 col-sm-3">Marking</div>
+                                    <div class="col-xs-6 col-sm-3" id="curr_reason" >Marking</div>
                                     <div id="curr_student_btns" class="col-sm-12">
                                         <button id='dismiss_curr' class='btn btn-primary'>Dismiss</button>
                                         <button id='delay_curr' class='btn btn-warning'>Delay</button>
@@ -104,11 +129,11 @@
                                     <!--template-->
                                         <div style="display: none;">
                                             <tr id='template_student'>
-                                                <td id='student_name'>John</td>
-                                                <td id='student_desk'>Doe</td>
-                                                <td id='student_wait_time'>Doe</td>
-                                                <td id='reason'>john@example.com</td>
-                                                <td><button id='dismiss' class='btn btn-danger'>Dismiss</button></td>
+                                                <td class='student_name'>John</td>
+                                                <td class='student_desk'>Doe</td>
+                                                <td class='student_wait_time'>Doe</td>
+                                                <td class='reason'>Marks</td>
+                                                <td><button class='btn btn-danger dismiss'>Dismiss</button></td>
                                             </tr>
                                         </div>
                                     <!--end template-->
