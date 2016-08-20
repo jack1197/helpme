@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
                     @if (Auth::guest() )
-                    Not logged in.
+                    Not logged in.{{ $ses }}
                     @else
                     Hello, {{ Auth::user()->name }}!
                     @endif
