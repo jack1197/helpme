@@ -4,6 +4,7 @@ $(document).ready(function(){
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
     });
+    $('#pan_manage_class').hide();
 
     $("#btn_make_class").click(function(){
         make_class($("#newclassname")[0].value, $("#newclassroom")[0].value, 
@@ -52,7 +53,7 @@ function make_class(name, room, callback, error){
 }
 
 function join_class(code, callback, error){
-    console.log("makeclass run");
+    //console.log("makeclass run");
     $.ajax({
         url: "/class/join",
         type: "GET",
@@ -84,9 +85,9 @@ function start_class(tutor_code, student_code, name, room){
     $('#class_name_disp')[0].innerHTML = name;
     $('#class_room_disp')[0].innerHTML = room;
     $('#student_code_disp')[0].innerHTML = student_code;
-    $('#pan_join_class')[0].style = 'display: none;';
-    $('#pan_make_class')[0].style = 'display: none;';
-    $('#pan_manage_class')[0].style = '';
+    $('#pan_join_class').hide();
+    $('#pan_make_class').hide();
+    $('#pan_manage_class').show();
     //start loop
     class_loop();
     loop_time = setTimeout(class_loop, 4000);

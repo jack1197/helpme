@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <!-- ACTIVE INTERFACE -->
-                    <div id="pan_manage_class" style='display: none;'>
+                    <div id="pan_manage_class">
                         <h3>Class: <span id="class_name_disp"></span>, Room: <span id="class_room_disp"></span></h3>
                         <div class="panel-body well" id="pan_join_class">
                             <div class="form-horizontal">
