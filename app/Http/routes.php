@@ -24,3 +24,5 @@ Route::get('/help', 'HelpController@index');
 Route::get('/about', 'AboutController@index');
 Route::post('/account', 'AccountController@update');
 Route::get('/account', 'AccountController@index');
+Route::post('/class/new', 'ClassSessionController@newclass');
+Route::get('/class/join', 'ClassSessionController@joinclass');

@@ -28,3 +28,17 @@ h1 {
     box-shadow: 0px 1000px 0px 1000px #222;
     padding-top: 50px;
 }
+
+#student_code_disp {
+    font-size: 52px;
+}
+#curr_student {
+    padding: 20px;
+}
+#curr_student div {
+    font-size: 20px;
+}
+#curr_student_btns {
+    padding: 20px;
+    padding-bottom: 0;
+}

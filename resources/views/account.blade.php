@@ -9,26 +9,6 @@
                 <div class="panel-heading lg">Account Settings</div>
 
                 <div class="panel-body">
-                
-                    @if (isset($success))
-                    <div class="alert alert-success">
-                    <strong>Success!</strong> {{ $success }}
-                    </div>
-                    @endif
-
-                    @if (isset($error))
-                    <div class="alert alert-danger">
-                        <strong>Error!</strong> {{ $error }}
-                    </div>
-                    @endif
-
-                    @if (isset($errors) && count($errors) > 0)
-                    @foreach($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        <strong>Error!</strong> {{ $error }}
-                    </div>
-                    @endforeach
-                    @endif
 
                     <h3>Update User Information:</h3>
                     <div class="panel-body well">

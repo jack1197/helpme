@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Auth;
+use App\ClassSession;
 use Illuminate\Http\Request;
 
 class TutorController extends Controller
@@ -25,6 +26,19 @@ class TutorController extends Controller
      */
     public function index(Request $request)
     {
-        return view('tutor')
+        return view('tutor');
     }
+
+    public function getupdate(Request $request)
+    {
+        
+        if(ClassSession::where('tutor_code', $request->tutor_code)->count() != 1)
+        {
+            return reponse()->json([]);
+        }
+        
+        $csession = ClassSession::where('tutor_code', $request->tutor_code)->firstOrFail();
+
+    }
+
 }

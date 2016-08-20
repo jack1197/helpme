@@ -23,4 +23,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function class_session()
+    {
+        return $this->hasMany('App\ClassSession', 'id', 'tutor_id');
+    }
 }
