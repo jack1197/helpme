@@ -25,16 +25,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        if (Auth::check())
-        {
-            $user = Auth::user();
-            return view('student', [
-                'user' => $user
-            ]);
-        }
-        else
-        {
-            return view('student');
-        }
+        return view('student');
     }
+    
 }

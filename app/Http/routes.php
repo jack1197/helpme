@@ -22,3 +22,5 @@ Route::get('/student', 'StudentController@index');
 Route::get('/tutor', 'TutorController@index');
 Route::get('/help', 'HelpController@index');
 Route::get('/about', 'AboutController@index');
+Route::post('/account', 'AccountController@update');
+Route::get('/account', 'AccountController@index');

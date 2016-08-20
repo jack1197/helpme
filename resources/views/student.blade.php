@@ -8,10 +8,10 @@
                 <div class="panel-heading">Student page</div>
 
                 <div class="panel-body">
-                    @if (isset($user)) 
-                    Hello, {{ $user->name }}! <br> You are logged in! 
+                    @if (Auth::guest() )
+                    Not logged in.
                     @else
-                    Not logged in
+                    Hello, {{ Auth::user()->name }}!
                     @endif
 
                 </div>
