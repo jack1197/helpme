@@ -22,7 +22,15 @@ Route::get('/student', 'StudentController@index');
 Route::get('/tutor', 'TutorController@index');
 Route::get('/help', 'HelpController@index');
 Route::get('/about', 'AboutController@index');
+
 Route::post('/account', 'AccountController@update');
 Route::get('/account', 'AccountController@index');
+
+
 Route::post('/class/new', 'ClassSessionController@newclass');
-Route::get('/class/join', 'ClassSessionController@joinclass');
+
+Route::get('/class/tutor/join', 'ClassSessionController@tutorjoinclass');
+
+Route::get('/class/student', 'ClassSessionController@studentjoinclass');
+Route::put('/class/student', 'ClassSessionController@studentupdateclass');
+Route::delete('/class/student', 'ClassSessionController@studentleaveclass');

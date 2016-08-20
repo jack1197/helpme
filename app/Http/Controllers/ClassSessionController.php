@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Http\Requests;
 use Auth;
 use App\ClassSession;
+use App\StudentSession;
 use Illuminate\Http\Request;
 
 class ClassSessionController extends Controller
@@ -60,9 +61,11 @@ class ClassSessionController extends Controller
             ]);
     }
 
-    public function joinclass(Request $request)
+    public function tutorjoinclass(Request $request)
     {
-        $this->validate($request, []);
+        $this->validate($request, [
+            'tutor_id' => 'min:10000000|max:99999999|integer|required',
+            ]);
 
         $csession = ClassSession::where('tutor_code', $request->tutor_code)->firstOrFail();
         $csession->last_accessed = Carbon::now();
@@ -77,4 +80,79 @@ class ClassSessionController extends Controller
 
     }
 
+    public function tutordeleteclass(Request $request)
+    {
+        $this->validate($request, [
+            'tutor_id' => 'min:10000000|max:99999999|integer|required',
+        ]);
+
+        $csession = ClassSession::where('tutor_code', $request->tutor_code)->firstOrFail();
+        $csession->delete();
+        
+        return response()->json(['success' => true]);
+
+    }
+
+    public function studentjoinclass(Request $request)
+    {
+        $this->validate($request, [
+            'student_code' => 'min:10000000|max:99999999|integer|required',
+            'name' => 'max:100|string|required',
+            'desk' => 'max:100|string',
+            ]);
+
+        $csession = ClassSession::where('student_code', $request->student_code)->firstOrFail();
+        $csession->last_accessed = Carbon::now();
+        $csession->save();
+
+        $ssession = new StudentSession;
+        $ssession->name = $request->name;
+        $ssession->desk = $request->desk;
+        $ssession->class_id = $csession->id;
+        $ssession->student_id = Auth::check() ? Auth::user()->id : null;
+        $ssession->last_accessed = Carbon::now();
+        $ssession->needs_help = false;
+        $ssession->save();
+
+        
+        return response()->json([
+            'class_name' => $csession->class_name,
+            'class_room' => $csession->class_room,
+            'name' => $ssession->name,
+            'desk' => $ssession->desk,
+            'student_session_id' => $ssession->id,
+            ]);
+
+    }
+
+    public function studentleaveclass(Request $request)
+    {
+        $ssession = StudentSession::where('id', $request->student_session_id)->firstOrFail();
+        $ssession->delete();
+        
+        return response()->json(['success' => true]);
+    }
+
+    public function studentupdateclass(Request $request)
+    {
+        $this->validate($request, [
+            'needs_help' => 'boolean|required',
+            'student_session_id' => 'integer|required',
+        ]);
+        
+        $ssession = StudentSession::where('id', $request->student_session_id)->firstOrFail();
+        if ($request->needs_help && ! $ssession->needs_help )
+        {
+            $ssession->needs_help = true;
+            $ssession->asked_for_help = Carbon::now();
+            $ssession->help_reason = $request->reason;
+        } 
+        elseif (!$request->needs_help)
+        {
+            $ssession->needs_help = false;
+        }
+        $ssession->save();
+        
+        return response()->json(['success' => true]);
+    }
 }

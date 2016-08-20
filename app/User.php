@@ -24,8 +24,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function class_session()
+    public function classsession()
     {
         return $this->hasMany('App\ClassSession', 'id', 'tutor_id');
+    }
+
+    public function studentsession()
+    {
+        return $this->hasMany('App\StudentSession', 'id', 'student_id');
     }
 }

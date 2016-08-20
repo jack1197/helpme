@@ -73,7 +73,7 @@
                                     <span class="col-sm-6"><code id="student_code_disp"></code></span>
                                 </div>
                                 <!--List of students-->
-                                <h3>Next Student</h3>
+                                <h3>Next Student:</h3>
                                 <div class="col-sm-12" id="curr_student">
                                     <div class="col-xs-6 col-sm-3">Name:</div>
                                     <div class="col-xs-6 col-sm-3">Joe</div>
@@ -84,12 +84,12 @@
                                     <div class="col-xs-6 col-sm-3">Reason:</div>
                                     <div class="col-xs-6 col-sm-3">Marking</div>
                                     <div id="curr_student_btns" class="col-sm-12">
-                                        <button id='dismiss_curr' class='btn-lg btn-primary'>Dismiss</button>
-                                        <button id='delay_curr' class='btn-lg btn-warning'>Delay</button>
-                                        <button id='undo_last' class='btn-lg btn-default'>Undo</button>
+                                        <button id='dismiss_curr' class='btn btn-primary'>Dismiss</button>
+                                        <button id='delay_curr' class='btn btn-warning'>Delay</button>
+                                        <button id='undo_last' class='btn btn-default'>Undo</button>
                                     </div>
                                 </div>
-                                <h3>Waiting Students</h3>
+                                <h3>Waiting Students:</h3>
                                 <table class="table table-striped table-responsive">
                                     <thead> 
                                         <tr>
@@ -102,15 +102,17 @@
                                     </thead>
                                     <tbody id="student_table">
                                     <!--template-->
-                                        <tr id='template_student'>
-                                            <td id='student_name'>John</td>
-                                            <td id='student_desk'>Doe</td>
-                                            <td id='student_wait_time'>Doe</td>
-                                            <td id='reason'>john@example.com</td>
-                                            <td><button id='dismiss' class='btn btn-danger'>Dismiss</button></td>
-                                        </tr>
-                                    </tbody>
+                                        <div style="display: none;">
+                                            <tr id='template_student'>
+                                                <td id='student_name'>John</td>
+                                                <td id='student_desk'>Doe</td>
+                                                <td id='student_wait_time'>Doe</td>
+                                                <td id='reason'>john@example.com</td>
+                                                <td><button id='dismiss' class='btn btn-danger'>Dismiss</button></td>
+                                            </tr>
+                                        </div>
                                     <!--end template-->
+                                    </tbody>
                                 </table>
 
 

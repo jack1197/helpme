@@ -53,9 +53,9 @@ function make_class(name, room, callback, error){
 }
 
 function join_class(code, callback, error){
-    //console.log("makeclass run");
+    console.log("Joining class");
     $.ajax({
-        url: "/class/join",
+        url: "/class/tutor/join",
         type: "GET",
         data: {
             'tutor_code': code,
@@ -66,6 +66,11 @@ function join_class(code, callback, error){
     });
 }
 
+function update_class()
+{
+    
+}
+
 class_data = {
     tutor_code: null,
     student_code: null,
@@ -73,6 +78,7 @@ class_data = {
     room: null,
 }
 loop_timer = null;
+
 
 function start_class(tutor_code, student_code, name, room){
     class_data = {

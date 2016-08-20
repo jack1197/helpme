@@ -10,4 +10,9 @@ class ClassSession extends Model
     {
         return $this->belongsTo('App\User', 'tutor_id', 'id');
     }
+
+    public function studentsession()
+    {
+        return $this->hasMany('App\StudentSession', 'id', 'class_id');
+    }
 }
