@@ -33,6 +33,7 @@ Route::post('/class/new', 'ClassSessionController@newclass');
 Route::get('/class/tutor', 'ClassSessionController@tutorjoinclass');
 Route::put('/class/tutor', 'ClassSessionController@tutorupdateclass');
 Route::delete('/class/tutor', 'ClassSessionController@tutordeleteclass');
+Route::get('/class/tutor/refresh', 'ClassSessionController@tutorrefreshclass');
 
 Route::get('/class/student', 'ClassSessionController@studentjoinclass');
 Route::get('/class/student/refresh', 'ClassSessionController@studentrefreshclass');

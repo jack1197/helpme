@@ -112,6 +112,19 @@ function delete_class(code, callback, error){
         error: error,
     });
 }
+function refresh_class(code, callback, error){
+    console.log("Refreshing class");
+    $.ajax({
+        url: "/class/tutor/refresh",
+        type: "GET",
+        data: {
+            'tutor_code': code,
+        },
+        dataType: 'json',
+        success: callback,
+        error: error,
+    });
+}
 
 function update_class()
 {
@@ -150,6 +163,14 @@ function start_class(tutor_code, student_code, name, room){
 
 function class_loop()
 {
+    //update data
     tutor_code = class_data.tutor_code;
+    refresh_class(tutor_code, function(){
+        //success
+        
+    }, function(jqXHR, status, errorThrown){
+        //on error
+        alert("Request Error: " + status + " " + errorThrown);
+    });
 
 }

@@ -155,24 +155,31 @@ function class_loop()
 {
     refresh_session(function(data){
         //on success
-        if (data == []){
-
+        if (data.success == false)
+        {
+            $("#pan_active_class").hide();
+            $("#pan_join_class").show();
+            clearInterval(loop_timer);   
         }
-        class_data = data;
-        $("#curr_class")[0].innerHTML = class_data.class_name;
-        $("#curr_desk")[0].innerHTML = class_data.ssession.desk;
-        $("#curr_name")[0].innerHTML = class_data.ssession.name;
-        if (class_data.ssession.needs_help){
-            $('#btn_scrub_that').show();
-            $('#btn_help_me').hide();
-            $("#helpreason")[0].disabled = true;
-        }else{
-            $('#btn_scrub_that').hide();
-            $('#btn_help_me').show();
-            $("#helpreason")[0].disabled = false;
+        else
+        {
+            class_data = data;
+            $("#curr_class")[0].innerHTML = class_data.class_name;
+            $("#curr_desk")[0].innerHTML = class_data.ssession.desk;
+            $("#curr_name")[0].innerHTML = class_data.ssession.name;
+            if (class_data.ssession.needs_help){
+                $('#btn_scrub_that').show();
+                $('#btn_help_me').hide();
+                $("#helpreason")[0].disabled = true;
+            }else{
+                $('#btn_scrub_that').hide();
+                $('#btn_help_me').show();
+                $("#helpreason")[0].disabled = false;
+            }
         }
     }, function(jqXHR, status, errorThrown){
         //on error
         alert("Request Error: " + status + " " + errorThrown);
+
     })
 }

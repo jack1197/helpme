@@ -93,6 +93,42 @@ class ClassSessionController extends Controller
 
     }
 
+    public function tutorrefreshclass(Request $request)
+    {
+        $this->validate($request, [
+            'tutor_code' => 'min:10000000|max:99999999|integer|required',
+        ]);
+
+        $csession = ClassSession::where('tutor_code', $request->tutor_code)->firstOrFail();
+        $ssessions = StudentSession::where('class_id', $csession->id)->get();
+
+        $student_sessions = array();
+
+        foreach($ssessions as $ssession)
+        {
+            $student_session = [
+                'sid' => $ssession->id,
+                'name' => $ssession->name,
+                'desk' => $ssession->desk,
+                'needs_help' =>$ssession->needs_hlep,
+                'requested' => Carbon::parse($ssession->asked_for_help)->timestamp,
+            ];
+            array_push($student_sessions, $student_session);
+        }
+
+        return response()->json([
+            'success' => true,
+            'now' => Carbon::now()->timestamp,
+            'student_code' => $csession->student_code,
+            'tutor_code' => $csession->tutor_code, 
+            'class_name' => $csession->class_name,
+            'class_room' => $csession->class_room,
+            'sessions' => $student_sessions,
+            ]);
+
+
+    }
+
     //
 
 
@@ -137,7 +173,7 @@ class ClassSessionController extends Controller
     {
         if ( StudentSession::where('id', $request->student_session_id)->count() == 0)
         {
-            return response()->jsion(['success' => false]);
+            return response()->json(['success' => false]);
         }
         $ssession = StudentSession::where('id', $request->student_session_id)->firstOrFail();
         $csession = $ssession->classsession;
