@@ -101,13 +101,13 @@
                                 <h3>Next Student:</h3>
                                 <div class="col-sm-12 student_cont" id="curr_student">
                                     <div class="col-xs-6 col-sm-3">Name:</div>
-                                    <div class="col-xs-6 col-sm-3" id="curr_name"></div>
+                                    <div class="col-xs-6 col-sm-3" id="curr_name"> </div>
                                     <div class="col-xs-6 col-sm-3">Desk:</div>
-                                    <div class="col-xs-6 col-sm-3" id="curr_desk"></div>
+                                    <div class="col-xs-6 col-sm-3" id="curr_desk"> </div>
                                     <div class="col-xs-6 col-sm-3">Waiting Time:</div>
-                                    <div class="col-xs-6 col-sm-3 counting" id="curr_time"></div>
+                                    <div class="col-xs-6 col-sm-3 counting" id="curr_time"> </div>
                                     <div class="col-xs-6 col-sm-3">Reason:</div>
-                                    <div class="col-xs-6 col-sm-3" id="curr_reason" ></div>
+                                    <div class="col-xs-6 col-sm-3" id="curr_reason"> </div>
                                     <div id="curr_student_btns" class="col-sm-12">
                                         <button id='dismiss_curr' class='btn btn-primary dismiss_top'>Dismiss</button>
                                         <!--<button id='delay_curr' class='btn btn-warning'>Delay</button>
