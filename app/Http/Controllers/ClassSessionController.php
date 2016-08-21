@@ -100,7 +100,8 @@ class ClassSessionController extends Controller
         ]);
 
         $csession = ClassSession::where('tutor_code', $request->tutor_code)->firstOrFail();
-        $ssessions = StudentSession::where('class_id', $csession->id)->get();
+        $ssessions = StudentSession::where('class_id', $csession->id)
+            ->where("needs_help", true)->get();
 
         $student_sessions = array();
 
@@ -110,7 +111,9 @@ class ClassSessionController extends Controller
                 'sid' => $ssession->id,
                 'name' => $ssession->name,
                 'desk' => $ssession->desk,
-                'needs_help' =>$ssession->needs_hlep,
+                'needs_help' =>$ssession->needs_help,
+                'delay' =>$ssession->delay_time,
+                'reason' =>$ssession->reason,
                 'requested' => Carbon::parse($ssession->asked_for_help)->timestamp,
             ];
             array_push($student_sessions, $student_session);
@@ -140,9 +143,14 @@ class ClassSessionController extends Controller
             'desk' => 'max:100|string',
             ]);
 
-        $csession = ClassSession::where('student_code', $request->student_code)->firstOrFail();
-        $csession->last_accessed = Carbon::now();
-        $csession->save();
+
+        $csessions = ClassSession::where('student_code', $request->student_code);
+        if ( $csessions->count() != 1)
+        {
+            return response()->json(['success' => false]);
+        }
+        $csession = $csessions->firstOrFail();
+
 
         $ssession = new StudentSession;
         $ssession->name = $request->name;
@@ -171,11 +179,12 @@ class ClassSessionController extends Controller
     }
     public function studentrefreshclass(Request $request)
     {
-        if ( StudentSession::where('id', $request->student_session_id)->count() == 0)
+        $ssessions = StudentSession::where('id', $request->student_session_id);
+        if ( $ssessions->count() != 1)
         {
             return response()->json(['success' => false]);
         }
-        $ssession = StudentSession::where('id', $request->student_session_id)->firstOrFail();
+        $ssession = $ssessions->firstOrFail();
         $csession = $ssession->classsession;
         
         return response()->json([

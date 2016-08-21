@@ -99,19 +99,19 @@
                                 </div>
                                 <!--List of students-->
                                 <h3>Next Student:</h3>
-                                <div class="col-sm-12" id="curr_student">
+                                <div class="col-sm-12 student_cont" id="curr_student">
                                     <div class="col-xs-6 col-sm-3">Name:</div>
-                                    <div class="col-xs-6 col-sm-3" id="curr_name">Joe</div>
+                                    <div class="col-xs-6 col-sm-3" id="curr_name"></div>
                                     <div class="col-xs-6 col-sm-3">Desk:</div>
-                                    <div class="col-xs-6 col-sm-3" id="curr_desk">12</div>
+                                    <div class="col-xs-6 col-sm-3" id="curr_desk"></div>
                                     <div class="col-xs-6 col-sm-3">Waiting Time:</div>
-                                    <div class="col-xs-6 col-sm-3" id="curr_time">5 minutes</div>
+                                    <div class="col-xs-6 col-sm-3 counting" id="curr_time"></div>
                                     <div class="col-xs-6 col-sm-3">Reason:</div>
-                                    <div class="col-xs-6 col-sm-3" id="curr_reason" >Marking</div>
+                                    <div class="col-xs-6 col-sm-3" id="curr_reason" ></div>
                                     <div id="curr_student_btns" class="col-sm-12">
-                                        <button id='dismiss_curr' class='btn btn-primary'>Dismiss</button>
-                                        <button id='delay_curr' class='btn btn-warning'>Delay</button>
-                                        <button id='undo_last' class='btn btn-default'>Undo</button>
+                                        <button id='dismiss_curr' class='btn btn-primary dismiss'>Dismiss</button>
+                                        <!--<button id='delay_curr' class='btn btn-warning'>Delay</button>
+                                        <button id='undo_last' class='btn btn-default'>Undo</button>-->
                                     </div>
                                 </div>
                                 <h3>Waiting Students:</h3>
@@ -127,15 +127,13 @@
                                     </thead>
                                     <tbody id="student_table">
                                     <!--template-->
-                                        <div style="display: none;">
-                                            <tr id='template_student'>
-                                                <td class='student_name'>John</td>
-                                                <td class='student_desk'>Doe</td>
-                                                <td class='student_wait_time'>Doe</td>
-                                                <td class='reason'>Marks</td>
-                                                <td><button class='btn btn-danger dismiss'>Dismiss</button></td>
-                                            </tr>
-                                        </div>
+                                        <tr id='template_student' class="student_list_item student_cont" style="display: none;">
+                                            <td class='student_name'>John</td>
+                                            <td class='student_desk'>Doe</td>
+                                            <td class='student_wait_time counting'>Doe</td>
+                                            <td class='reason'>Marks</td>
+                                            <td><button class='btn btn-danger dismiss'>Dismiss</button></td>
+                                        </tr>
                                     <!--end template-->
                                     </tbody>
                                 </table>
