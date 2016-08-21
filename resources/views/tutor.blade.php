@@ -109,7 +109,7 @@
                                     <div class="col-xs-6 col-sm-3">Reason:</div>
                                     <div class="col-xs-6 col-sm-3" id="curr_reason" ></div>
                                     <div id="curr_student_btns" class="col-sm-12">
-                                        <button id='dismiss_curr' class='btn btn-primary dismiss'>Dismiss</button>
+                                        <button id='dismiss_curr' class='btn btn-primary dismiss_top'>Dismiss</button>
                                         <!--<button id='delay_curr' class='btn btn-warning'>Delay</button>
                                         <button id='undo_last' class='btn btn-default'>Undo</button>-->
                                     </div>

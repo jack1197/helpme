@@ -64,7 +64,7 @@ $(document).ready(function () {
     })
     setInterval(counting, 1000);
 
-    $(".dismiss").click(dismiss_handler);
+    $(".dismiss_top").click(dismiss_handler);
 
 });
 
