@@ -35,7 +35,18 @@ $(document).ready(function () {
     $("#btn_help_me").click(help_me);
     $("#btn_scrub_that").click(scrub_that);
 
-    leave_func = function () {
+
+    $("#btn_leave_class").one('click', leave_func);
+
+});
+
+class_data = {};
+loop_timer = null;
+var failed_attempts = 0;
+var max_failed_attemps = 5;
+var main_loop_time = 4000;
+
+function leave_func (){
         clearInterval(loop_timer);
         leave_class(function (data) {
             //on success
@@ -50,16 +61,9 @@ $(document).ready(function () {
                 //on error
                 $("#btn_leave_class").one('click', leave_func);
                 alert("Request Error: " + status + " " + errorThrown);
-                loop_timer = setInterval(4000);
+                loop_timer = setInterval(main_loop_time);
             });
     };
-
-    $("#btn_leave_class").one('click', leave_func);
-
-});
-
-class_data = {};
-loop_timer = null;
 
 function join_class(code, name, desk, callback, error) {
     console.log("Joining class");
@@ -123,27 +127,48 @@ function refresh_session(callback, error) {
 }
 
 function help_me() {
+    clearInterval(loop_timer);
+    $('#btn_help_me').attr('disabled', 'disabled');
     update_session(true, $("#helpreason")[0].value, function () {
         $('#btn_scrub_that').show();
         $('#btn_help_me').hide();
+        $('#btn_help_me').removeAttr('disabled');
         $("#helpreason")[0].disabled = true;
+        loop_timer = setInterval(class_loop, main_loop_time);
     },
         function (jqXHR, status, errorThrown) {
             //on error
-            alert("Request Error: " + status + " " + errorThrown);
+            loop_timer = setInterval(class_loop, main_loop_time);
+            if (failed_attempts <= max_failed_attemps) {
+                help_me();
+            }else{
+                $('#btn_help_me').removeAttr('disabled');
+            }
+            failed_fetch();
 
         });
 }
 
 function scrub_that() {
+    clearInterval(loop_timer);
+    $('#btn_scrub_that').attr('disabled', 'disabled');
     update_session(false, '', function () {
         $('#btn_scrub_that').hide();
+        $('#btn_scrub_that').removeAttr('disabled');
         $('#btn_help_me').show();
         $("#helpreason")[0].disabled = false;
+        loop_timer = setInterval(class_loop, main_loop_time);
     },
         function (jqXHR, status, errorThrown) {
             //on error
-            alert("Request Error: " + status + " " + errorThrown);
+            loop_timer = setInterval(class_loop, main_loop_time);
+            if (failed_attempts <= max_failed_attemps) {
+                scrub_that();
+            }
+            else{
+                $('#btn_scrub_that').removeAttr('disabled');
+            }
+            failed_fetch();
 
         });
 }
@@ -157,7 +182,7 @@ function start_class() {
 
     //start loop
     class_loop();
-    loop_timer = setInterval(class_loop, 4000);
+    loop_timer = setInterval(class_loop, main_loop_time);
 }
 
 function class_loop() {

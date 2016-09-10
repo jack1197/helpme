@@ -26,30 +26,9 @@ $(document).ready(function () {
 
     $("#btn_make_class").one('click', make_func);
 
-    join_func = function () {
-        join_class($("#tutorjoincode")[0].value,
-            function (data) {
-                //on success
-                $("#btn_join_class").one('click', join_func);
-                start_class(data.tutor_code, data.student_code, data.class_name, data.class_room);
-            },
-            function (jqXHR, status, errorThrown) {
-                //on error
-                $("#btn_join_class").one('click', join_func);
-                alert("Request Error: " + status + " " + errorThrown);
-            });
-    };
-
     $("#btn_join_class").one('click', join_func);
     $("#btn_leave_class").one('click', leave_class);
-    $("#btn_delete_class").click(function () {
-        clearInterval(loop_timer);
-        delete_class($("#tutorjoincode")[0].value, leave_class, function (jqXHR, status, errorThrown) {
-            //on error
-            alert("Request Error: " + status + " " + errorThrown);
-            loop_timer = setInterval(class_loop, 4000);
-        })
-    });
+    $("#btn_delete_class").click(delete_func);
 
     $("#btn_hide_tutor_code").click(function () {
         $('#tutorjoincode_settings').hide();
@@ -68,6 +47,39 @@ $(document).ready(function () {
 
 });
 
+var failed_attempts = 0;
+var max_failed_attemps = 5;
+var main_loop_time = 4000;
+
+ function join_func() {
+        join_class($("#tutorjoincode")[0].value,
+            function (data) {
+                //on success
+                $("#btn_join_class").one('click', join_func);
+                start_class(data.tutor_code, data.student_code, data.class_name, data.class_room);
+            },
+            function (jqXHR, status, errorThrown) {
+                //on error
+                $("#btn_join_class").one('click', join_func);
+                alert("Request Error: " + status + " " + errorThrown);
+            });
+};
+
+function delete_func() {
+        clearInterval(loop_timer);
+        $("#btn_delete_class").attr("disabled", "disabled");
+        delete_class($("#tutorjoincode")[0].value, leave_class, function (jqXHR, status, errorThrown) {
+            //on error
+            //loop_timer = setInterval(class_loop, main_loop_time);
+            if (failed_attempts <= max_failed_attemps) {
+                delete_func();
+            } else {
+                $("#btn_delete_class").removeAttr("disabled");
+            }
+            failed_fetch();
+        })
+}
+
 function counting() {
     counters = $(".counting");
     n_counters = counters.length;
@@ -85,7 +97,9 @@ function dismiss_handler(event) {
     element = clicked.closest(".student_cont");
     sid = element.attr("sid");
     console.log(sid);
+    clearInterval(loop_timer);
     update_student_session(false, "", sid, function (data) {
+        loop_timer = setInterval(class_loop, main_loop_time);
         if (data.success == true) {
             if (element.is('tr')) {
                 clicked.remove();
@@ -94,8 +108,10 @@ function dismiss_handler(event) {
         clicked.removeAttr("disabled");
     }, function (jqXHR, status, errorThrown) {
         //on error
+        loop_timer = setInterval(class_loop, main_loop_time);
         alert("Request Error: " + status + " " + errorThrown);
         clicked.removeAttr("disabled");
+
     });
 }
 
@@ -146,6 +162,7 @@ function join_class(code, callback, error) {
 
 function leave_class() {
     clearInterval(loop_timer);
+    $("#btn_delete_class").removeAttr("disabled");
     $('#class_name_disp')[0].innerHTML = '';
     $('#class_room_disp')[0].innerHTML = '';
     $('#student_code_disp')[0].innerHTML = '';
@@ -215,7 +232,17 @@ function start_class(tutor_code, student_code, name, room) {
     $('#pan_manage_class').show();
     //start loop
     class_loop();
-    loop_timer = setInterval(class_loop, 4000);
+    loop_timer = setInterval(class_loop, main_loop_time);
+}
+
+function failed_fetch() {
+    failed_attempts = Math.max(failed_attempts, 0);
+    failed_attempts++;
+    if (failed_attempts > 5) {
+        alert("Server not responding, diconnecting session. If the class is still open, try reconnecting. If this issue persists, contact support.");
+        leave_class();
+        failed_attempts = 0;
+    } 
 }
 
 function class_loop() {
@@ -223,6 +250,10 @@ function class_loop() {
     tutor_code = class_data.tutor_code;
     refresh_class(tutor_code, function (data) {
         //success
+        if (data.success == false) {
+            failed_fetch();
+            return;
+        }
         class_data = {
             tutor_code: data.tutor_code,
             student_code: data.student_code,

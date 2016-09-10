@@ -85,7 +85,7 @@
                                         <ul class="list-group">
                                             <li class="list-group-item">
                                                 Tutor Join Code: 
-                                                <span id="tutorjoincode_settings"></span>
+                                                <code id="tutorjoincode_settings"></code>
                                                 <btn class="btn btn-warning" id="btn_show_tutor_code">Show</btn>
                                                 <btn class="btn btn-primary" id="btn_hide_tutor_code">Hide</btn>
 

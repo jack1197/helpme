@@ -99,7 +99,13 @@ class ClassSessionController extends Controller
             'tutor_code' => 'min:10000000|max:99999999|integer|required',
         ]);
 
-        $csession = ClassSession::where('tutor_code', $request->tutor_code)->firstOrFail();
+        $csessions = ClassSession::where('tutor_code', $request->tutor_code);
+        if ($csessions->count() != 1) {
+            return response()->json([
+                'success' => false,
+            ]);
+        }
+        $csession = $csessions->firstOrFail();
         $ssessions = StudentSession::where('class_id', $csession->id)
             ->where("needs_help", true)->get();
 
