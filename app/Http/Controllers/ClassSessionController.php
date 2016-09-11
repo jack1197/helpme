@@ -107,7 +107,7 @@ class ClassSessionController extends Controller
         }
         $csession = $csessions->firstOrFail();
         $ssessions = StudentSession::where('class_id', $csession->id)
-            ->where("needs_help", true)->get();
+            ->where("needs_help", 1)->get();
 
         $student_sessions = array();
 
@@ -117,7 +117,7 @@ class ClassSessionController extends Controller
                 'sid' => $ssession->id,
                 'name' => $ssession->name,
                 'desk' => $ssession->desk,
-                'needs_help' => (int) $ssession->needs_help,
+                'needs_help' => $ssession->needs_help,
                 'delay' => $ssession->delay_time,
                 'reason' => $ssession->help_reason,
                 'requested' => Carbon::parse($ssession->asked_for_help)->timestamp,
@@ -164,7 +164,7 @@ class ClassSessionController extends Controller
         $ssession->class_id = $csession->id;
         $ssession->student_id = Auth::check() ? Auth::user()->id : null;
         $ssession->last_accessed = Carbon::now();
-        $ssession->needs_help = false;
+        $ssession->needs_help = 0;
         $ssession->save();
 
         
@@ -211,13 +211,13 @@ class ClassSessionController extends Controller
         $ssession = StudentSession::where('id', $request->student_session_id)->firstOrFail();
         if ($request->needs_help && ! $ssession->needs_help )
         {
-            $ssession->needs_help = true;
+            $ssession->needs_help = 1;
             $ssession->asked_for_help = Carbon::now();
             $ssession->help_reason = $request->reason;
         } 
         elseif (!$request->needs_help)
         {
-            $ssession->needs_help = false;
+            $ssession->needs_help = 0;
         }
         $ssession->save();
         
