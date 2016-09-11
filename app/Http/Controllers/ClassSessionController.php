@@ -117,9 +117,9 @@ class ClassSessionController extends Controller
                 'sid' => $ssession->id,
                 'name' => $ssession->name,
                 'desk' => $ssession->desk,
-                'needs_help' =>$ssession->needs_help,
-                'delay' =>$ssession->delay_time,
-                'reason' =>$ssession->help_reason,
+                'needs_help' => (int) $ssession->needs_help,
+                'delay' => $ssession->delay_time,
+                'reason' => $ssession->help_reason,
                 'requested' => Carbon::parse($ssession->asked_for_help)->timestamp,
             ];
             array_push($student_sessions, $student_session);
