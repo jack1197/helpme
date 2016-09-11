@@ -164,6 +164,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //azure application insights
+
+        Marchie\MSApplicationInsightsLaravel\Providers\MSApplicationInsightsServiceProvider::class,
+
     ],
 
     /*
@@ -210,6 +214,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Active' => HieuLe\Active\Facades\Active::class,
+        //application insights
+        'AIClient' => Marchie\MSApplicationInsightsLaravel\Facades\MSApplicationInsightsClientFacade::class,
+        'AIServer' => Marchie\MSApplicationInsightsLaravel\Facades\MSApplicationInsightsServerFacade::class,
 
     ],
 
