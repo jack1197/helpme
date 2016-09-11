@@ -46,24 +46,24 @@ var failed_attempts = 0;
 var max_failed_attemps = 5;
 var main_loop_time = 4000;
 
-function leave_func (){
-        clearInterval(loop_timer);
-        leave_class(function (data) {
-            //on success
+function leave_func() {
+    clearInterval(loop_timer);
+    leave_class(function (data) {
+        //on success
+        $("#btn_leave_class").one('click', leave_func);
+        if (data.success == true) {
+            $("#pan_active_class").hide();
+            $("#pan_join_class").show();
+            clearInterval(loop_timer);
+        }
+    },
+        function (jqXHR, status, errorThrown) {
+            //on error
             $("#btn_leave_class").one('click', leave_func);
-            if (data.success == true) {
-                $("#pan_active_class").hide();
-                $("#pan_join_class").show();
-                clearInterval(loop_timer);
-            }
-        },
-            function (jqXHR, status, errorThrown) {
-                //on error
-                $("#btn_leave_class").one('click', leave_func);
-                alert("Request Error: " + status + " " + errorThrown);
-                loop_timer = setInterval(main_loop_time);
-            });
-    };
+            alert("Request Error: " + status + " " + errorThrown);
+            loop_timer = setInterval(main_loop_time);
+        });
+};
 
 function join_class(code, name, desk, callback, error) {
     console.log("Joining class");
@@ -141,7 +141,7 @@ function help_me() {
             loop_timer = setInterval(class_loop, main_loop_time);
             if (failed_attempts <= max_failed_attemps) {
                 help_me();
-            }else{
+            } else {
                 $('#btn_help_me').removeAttr('disabled');
             }
             failed_fetch();
@@ -165,7 +165,7 @@ function scrub_that() {
             if (failed_attempts <= max_failed_attemps) {
                 scrub_that();
             }
-            else{
+            else {
                 $('#btn_scrub_that').removeAttr('disabled');
             }
             failed_fetch();
@@ -178,9 +178,11 @@ function failed_fetch() {
     failed_attempts++;
     if (failed_attempts > 5) {
         alert("Server not responding, diconnecting session. If the class is still open, try reconnecting. If this issue persists, contact support.");
-        leave_class();
+        $("#pan_active_class").hide();
+        $("#pan_join_class").show();
+        clearInterval(loop_timer);
         failed_attempts = 0;
-    } 
+    }
 }
 
 function start_class() {
