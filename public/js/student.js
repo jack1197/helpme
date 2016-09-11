@@ -198,7 +198,7 @@ function class_loop() {
             $("#curr_class")[0].innerHTML = class_data.class_name;
             $("#curr_desk")[0].innerHTML = class_data.ssession.desk;
             $("#curr_name")[0].innerHTML = class_data.ssession.name;
-            if (class_data.ssession.needs_help) {
+            if (class_data.ssession.needs_help == "1") {
                 $('#btn_scrub_that').show();
                 $('#btn_help_me').hide();
                 $("#helpreason")[0].disabled = true;
