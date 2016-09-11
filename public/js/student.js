@@ -210,7 +210,7 @@ function class_loop() {
         }
     }, function (jqXHR, status, errorThrown) {
         //on error
-        alert("Request Error: " + status + " " + errorThrown);
+        failed_fetch();
 
     })
 }

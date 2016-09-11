@@ -104,6 +104,7 @@ function dismiss_handler(event) {
             if (element.is('tr')) {
                 clicked.remove();
             }
+            class_loop();
         }
         clicked.removeAttr("disabled");
     }, function (jqXHR, status, errorThrown) {
@@ -295,6 +296,6 @@ function class_loop() {
         $(".dismiss").click(dismiss_handler);
     }, function (jqXHR, status, errorThrown) {
         //on error
-        alert("Request Error: " + status + " " + errorThrown);
+        failed_fetch();
     });
 }
