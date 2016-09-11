@@ -39,3 +39,11 @@ Route::get('/class/student', 'ClassSessionController@studentjoinclass');
 Route::get('/class/student/refresh', 'ClassSessionController@studentrefreshclass');
 Route::put('/class/student', 'ClassSessionController@studentupdateclass');
 Route::delete('/class/student', 'ClassSessionController@studentleaveclass');
+
+Route::get('/help', function() {
+    return redirect('/');
+});
+
+Route::get('/about', function() {
+    return redirect('/');
+});
