@@ -173,6 +173,16 @@ function scrub_that() {
         });
 }
 
+function failed_fetch() {
+    failed_attempts = Math.max(failed_attempts, 0);
+    failed_attempts++;
+    if (failed_attempts > 5) {
+        alert("Server not responding, diconnecting session. If the class is still open, try reconnecting. If this issue persists, contact support.");
+        leave_class();
+        failed_attempts = 0;
+    } 
+}
+
 function start_class() {
     $("#pan_active_class").show();
     $("#pan_join_class").hide();
