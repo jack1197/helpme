@@ -1,4 +1,5 @@
-cd D:\home\site
+echo running custom deployment script
+cd D:\home\site\
 rm .env
 cp .env.deploy .env
 php artisan key:generate
