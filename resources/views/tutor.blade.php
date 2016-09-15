@@ -75,24 +75,23 @@
                                 <!--Class Controlls-->
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" href="#collapse1">
-                                                    <div class="btn btn-warning">Class Settings</div></a>
+                                            <div class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse1"><span class="btn btn-warning">Class Settings</span></a>
                                                 <div class="btn btn-danger" id="btn_leave_class">Leave Class</div>
-                                            </h4>
+                                            </div>
                                     </div>
                                     <div id="collapse1" class="panel-collapse collapse">
                                         <ul class="list-group">
                                             <li class="list-group-item">
                                                 Tutor Join Code: 
                                                 <code id="tutorjoincode_settings"></code>
-                                                <btn class="btn btn-warning" id="btn_show_tutor_code">Show</btn>
-                                                <btn class="btn btn-primary" id="btn_hide_tutor_code">Hide</btn>
+                                                <div class="btn btn-warning" id="btn_show_tutor_code">Show</div>
+                                                <div class="btn btn-primary" id="btn_hide_tutor_code">Hide</div>
 
                                             </li>
                                             <li class="list-group-item">
                                                 Delete Class(Irreversible): 
-                                                <btn class="btn btn-danger" id="btn_delete_class">DELETE</btn>
+                                                <div class="btn btn-danger" id="btn_delete_class">DELETE</div>
                                             </li>
                                         </ul>
                                     </div>

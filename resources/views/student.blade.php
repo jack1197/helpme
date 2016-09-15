@@ -21,25 +21,22 @@
                             <div class="form-horizontal">
                                 <div class="form-group">
                                     <label for="studentjoincode" class="col-sm-2 control-label">Student Join Code:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="studentjoincode" id="studentjoincode" class="form-control input-lg">
-                                        </div>
-                                    </div>
-                                <div class="form-group">
-                                    <label for="name" class="col-sm-2 control-label">Name:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="name" id="studentname" class="form-control input" value={{Auth::check() ? Auth::user()->name : '' }}>
-                                        </input>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="studentjoincode" id="studentjoincode" class="form-control input-lg">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="desk" class="col-sm-2 control-label">Desk/Location:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="desk" id="studentdesk" class="form-control input">
-                                        </input>
+                                    <label for="studentname" class="col-sm-2 control-label">Name:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="name" id="studentname" class="form-control input" value="{{Auth::check() ? Auth::user()->name : '' }}">
                                     </div>
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="studentdesk" class="col-sm-2 control-label">Desk/Location:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="desk" id="studentdesk" class="form-control input">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-8">
                                         <button id="btn_join_class" class="btn btn-primary">
@@ -56,22 +53,21 @@
                         <div class="panel-body well">
                             <div class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="name" class="col-sm-2 control-label">Name:</label>
+                                    <label class="col-sm-2 control-label">Name:</label>
                                     <div class="col-sm-10">
-                                    <h4 id='curr_name'></h4>
+                                        <h4 id='curr_name'>Blank</h4>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="desk" class="col-sm-2 control-label">Desk/Location:</label>
+                                    <label class="col-sm-2 control-label">Desk/Location:</label>
                                     <div class="col-sm-10">
-                                    <h4 id='curr_desk'></h4>
+                                        <h4 id='curr_desk'>Blank</h4>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="reason" class="col-sm-2 control-label">Reason:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="reason" id="helpreason" class="form-control input-lg">
-                                        </input>
+                                    <label class="col-sm-2 control-label">Reason:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="reason" id="helpreason" class="form-control input-lg">
                                     </div>
                                 </div>
                                 <div class="form-group">

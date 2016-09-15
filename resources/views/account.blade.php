@@ -16,13 +16,13 @@
                             {{ csrf_field() }}
                             {{ method_field('POST') }}
                             <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label">Name:</label>
+                                <label for="new-name" class="col-sm-2 control-label">Name:</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="name" id="new-name" class="form-control" value="{{ $user->name }}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="email" class="col-sm-2 control-label">Email:</label>
+                                <label for="new-email" class="col-sm-2 control-label">Email:</label>
                                 <div class="col-sm-10">
                                     <input type="email" name="email" id="new-email" class="form-control" value="{{ $user->email }}">
                                 </div>
@@ -53,7 +53,7 @@
                             {{ method_field('POST') }}
                             <h4>Old password:</h4>
                             <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label">Password:</label>
+                                <label for="password" class="col-sm-2 control-label">Password:</label>
                                 <div class="col-sm-10">
                                     <input type="password" name="password" id="oldpass" class="form-control">
                                 </div>
@@ -61,13 +61,13 @@
                             <h4>New password:</h4>
                             <p>Must be 8-64 characters</p>
                             <div class="form-group">
-                                <label for="password" class="col-sm-2 control-label">Password:</label>
+                                <label for="newpassword" class="col-sm-2 control-label">Password:</label>
                                 <div class="col-sm-10">
                                     <input type="password" name="newpassword" id="newpass" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="password" class="col-sm-2 control-label">Confirm:</label>
+                                <label for="newpassword_confirmation" class="col-sm-2 control-label">Confirm:</label>
                                 <div class="col-sm-10">
                                     <input type="password" name="newpassword_confirmation" id="confpass" class="form-control">
                                 </div>
