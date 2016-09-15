@@ -1,27 +1,9 @@
-# Laravel PHP Framework
+# Help Me! Class queueing
+This web app is designed for classrooms where students work independantly, but often require regular help from tutors. From personal experience, this can get somewhat out of hand, so i designed a web app to help solve the problem
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## To Microsoft Student Accelerator Markers:
+This app uses php and a templating engine to generate pages, page templates can be found in /resources/views, but the best way to view is probably to just view-source on azure.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Some setup is required to make this run on a web server, this has already been done with my azure web app (http://jw-helpme.azurewebsites.net).
+The main steps involve setting the \public directory as the root of the website, and running "composer install" in the \ directory to setup packages. Database properties can be configured in the .env file, an example is in .env.example or .env.deploy. after composer sets up the required packages, "php artisan key:generate" and "php artisan migrate" must be run to setup the encryption system and database respectively.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
-
-## Official Documentation
-
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
