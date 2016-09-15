@@ -15,4 +15,8 @@ class StudentSession extends Model
     {
         return $this->belongsTo('App\ClassSession', 'class_id');
     }
+
+    protected $casts = [
+        'needs_help' => 'boolean',
+    ];
 }
