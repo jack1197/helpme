@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'RootController@index');
+Route::get('/help', 'RootController@redirect_index');
+Route::get('/about', 'RootController@redirect_index');
 
 Route::auth();
 
@@ -39,11 +39,3 @@ Route::get('/class/student', 'ClassSessionController@studentjoinclass');
 Route::get('/class/student/refresh', 'ClassSessionController@studentrefreshclass');
 Route::put('/class/student', 'ClassSessionController@studentupdateclass');
 Route::delete('/class/student', 'ClassSessionController@studentleaveclass');
-
-Route::get('/help', function() {
-    return redirect('/');
-});
-
-Route::get('/about', function() {
-    return redirect('/');
-});
