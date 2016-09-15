@@ -60,8 +60,8 @@
                     <li class="{{ active_class(if_uri_pattern('home')) }}"><a href="{{ url('/home') }}">Home</a></li>
                     <li class="{{ active_class(if_uri_pattern('student*')) }}"><a href="{{ url('/student') }}">Student</a></li>
                     <li class="{{ active_class(if_uri_pattern('tutor*')) }}"><a href="{{ url('/tutor') }}">Tutor</a></li>
-                    <li class="{{ active_class(if_uri_pattern('help*')) }}"><a href="{{ url('/help') }}">Help</a></li>
-                    <li class="{{ active_class(if_uri_pattern('about')) }}"><a href="{{ url('/about') }}">About</a></li>
+                    <li class="{{ active_class(if_uri_pattern('help*')) }}" style='display: none;'><a href="{{ url('/help') }}">Help</a></li>
+                    <li class="{{ active_class(if_uri_pattern('about')) }}" style='display: none;'><a href="{{ url('/about') }}">About</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
