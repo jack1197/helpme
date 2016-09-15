@@ -24,11 +24,7 @@ class RootController extends Controller
      */
     public function index()
     {
-
-        start_measure('render', 'page render');
-        $a = view('welcome');
-        stop_measure('render', 'page render');
-        return $a;
+        return view('welcome');
     }
 
     public function redirect_index()
